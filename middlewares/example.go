@@ -22,8 +22,9 @@ func Stats() gin.HandlerFunc {
 
 		// after request
 		latency := time.Since(t)
+		log.Printf("cost: %s", latency)
 		// access the status we are sending
-		status := c.Writer.Status()
-		log.Printf("status: %d, cost: %s", status, latency)
+		//status := c.Writer.Status()
+		//log.Printf("status: %d", status)
 	}
 }
