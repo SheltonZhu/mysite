@@ -11,15 +11,19 @@ type BibleServiceServer struct {
 }
 
 func (p *BibleServiceServer) Get(ctx context.Context, id *pbs.Int32Value) (*pbs.Bible, error) {
-	b := dao.GetBibleById(int(id.Value))
-	return &pbs.Bible{Id: int32(b.Id), Text: b.Text}, nil
+	b, err := dao.GetBibleById(int(id.Value))
+	return &pbs.Bible{Id: int32(b.Id), Text: b.Text}, err
 }
 
 func (p *BibleServiceServer) List(ctx context.Context, _ *pbs.Empty) (*pbs.Bibles, error) {
 	bibles := make([]*pbs.Bible, 0)
-	for _, v := range dao.ListBibles() {
-		pbsBible := pbs.Bible{Id: int32(v.Id), Text: v.Text}
-		bibles = append(bibles, &pbsBible)
+	if b, err := dao.ListBibles(); err != nil {
+		return &pbs.Bibles{}, err
+	} else {
+		for _, v := range b {
+			pbsBible := pbs.Bible{Id: int32(v.Id), Text: v.Text}
+			bibles = append(bibles, &pbsBible)
+		}
 	}
 	return &pbs.Bibles{Bibles: bibles}, nil
 }
@@ -27,5 +31,16 @@ func (p *BibleServiceServer) List(ctx context.Context, _ *pbs.Empty) (*pbs.Bible
 func (p *BibleServiceServer) Create(ctx context.Context, text *pbs.StringValue) (*pbs.Int32Value, error) {
 	b := dao.Bible{Text: text.Value}
 	id, err := dao.CreateBible(&b)
+	if err != nil {
+		return &pbs.Int32Value{Value: int32(0)}, err
+	}
 	return &pbs.Int32Value{Value: int32(id)}, err
+}
+
+func (p *BibleServiceServer) Delete(ctx context.Context, id *pbs.Int32Value) (*pbs.Int32Value, error) {
+	count, err := dao.DeleteBible(int(id.Value))
+	if err != nil {
+		return &pbs.Int32Value{}, err
+	}
+	return &pbs.Int32Value{Value: int32(count)}, err
 }

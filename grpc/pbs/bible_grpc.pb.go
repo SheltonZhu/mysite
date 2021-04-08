@@ -21,6 +21,7 @@ type BibleServiceClient interface {
 	Get(ctx context.Context, in *Int32Value, opts ...grpc.CallOption) (*Bible, error)
 	List(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Bibles, error)
 	Create(ctx context.Context, in *StringValue, opts ...grpc.CallOption) (*Int32Value, error)
+	Delete(ctx context.Context, in *Int32Value, opts ...grpc.CallOption) (*Int32Value, error)
 }
 
 type bibleServiceClient struct {
@@ -58,6 +59,15 @@ func (c *bibleServiceClient) Create(ctx context.Context, in *StringValue, opts .
 	return out, nil
 }
 
+func (c *bibleServiceClient) Delete(ctx context.Context, in *Int32Value, opts ...grpc.CallOption) (*Int32Value, error) {
+	out := new(Int32Value)
+	err := c.cc.Invoke(ctx, "/protos.BibleService/Delete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BibleServiceServer is the server API for BibleService service.
 // All implementations must embed UnimplementedBibleServiceServer
 // for forward compatibility
@@ -65,6 +75,7 @@ type BibleServiceServer interface {
 	Get(context.Context, *Int32Value) (*Bible, error)
 	List(context.Context, *Empty) (*Bibles, error)
 	Create(context.Context, *StringValue) (*Int32Value, error)
+	Delete(context.Context, *Int32Value) (*Int32Value, error)
 	mustEmbedUnimplementedBibleServiceServer()
 }
 
@@ -80,6 +91,9 @@ func (UnimplementedBibleServiceServer) List(context.Context, *Empty) (*Bibles, e
 }
 func (UnimplementedBibleServiceServer) Create(context.Context, *StringValue) (*Int32Value, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedBibleServiceServer) Delete(context.Context, *Int32Value) (*Int32Value, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedBibleServiceServer) mustEmbedUnimplementedBibleServiceServer() {}
 
@@ -148,6 +162,24 @@ func _BibleService_Create_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BibleService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Int32Value)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BibleServiceServer).Delete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/protos.BibleService/Delete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BibleServiceServer).Delete(ctx, req.(*Int32Value))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BibleService_ServiceDesc is the grpc.ServiceDesc for BibleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -166,6 +198,10 @@ var BibleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Create",
 			Handler:    _BibleService_Create_Handler,
+		},
+		{
+			MethodName: "Delete",
+			Handler:    _BibleService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

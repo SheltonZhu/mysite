@@ -23,3 +23,5 @@
 # Protoc
 
 `protoc --go_out=. <Proto file path>`
+
+`protoc --go-grpc_out=. <Proto file path>`

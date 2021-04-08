@@ -9,6 +9,7 @@ service BibleService{
   rpc Get(Int32Value) returns (Bible){}
   rpc List(Empty) returns (Bibles){}
   rpc Create(StringValue) returns (Int32Value){}
+  rpc Delete(Int32Value) returns (Int32Value){}
 }
 
 message Bible {
