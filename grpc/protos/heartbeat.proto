@@ -1,8 +1,8 @@
 syntax = "proto3";
-package proto;
-import "grpc/proto/util.proto";
+package protos;
+import "grpc/protos/util.proto";
 
-option go_package = "/grpc/pb";
+option go_package = "/grpc/pbs";
 
 service HeartbeatService{
   rpc Heartbeat(Empty) returns (StringValue){}

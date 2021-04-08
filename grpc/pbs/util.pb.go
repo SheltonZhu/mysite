@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v3.15.6
-// source: grpc/proto/util.proto
+// source: grpc/protos/util.proto
 
-package pb
+package pbs
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -29,7 +29,7 @@ type Empty struct {
 func (x *Empty) Reset() {
 	*x = Empty{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_grpc_proto_util_proto_msgTypes[0]
+		mi := &file_grpc_protos_util_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -42,7 +42,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_grpc_proto_util_proto_msgTypes[0]
+	mi := &file_grpc_protos_util_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_grpc_proto_util_proto_rawDescGZIP(), []int{0}
+	return file_grpc_protos_util_proto_rawDescGZIP(), []int{0}
 }
 
 type Int32Value struct {
@@ -70,7 +70,7 @@ type Int32Value struct {
 func (x *Int32Value) Reset() {
 	*x = Int32Value{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_grpc_proto_util_proto_msgTypes[1]
+		mi := &file_grpc_protos_util_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -83,7 +83,7 @@ func (x *Int32Value) String() string {
 func (*Int32Value) ProtoMessage() {}
 
 func (x *Int32Value) ProtoReflect() protoreflect.Message {
-	mi := &file_grpc_proto_util_proto_msgTypes[1]
+	mi := &file_grpc_protos_util_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -96,7 +96,7 @@ func (x *Int32Value) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Int32Value.ProtoReflect.Descriptor instead.
 func (*Int32Value) Descriptor() ([]byte, []int) {
-	return file_grpc_proto_util_proto_rawDescGZIP(), []int{1}
+	return file_grpc_protos_util_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Int32Value) GetValue() int32 {
@@ -118,7 +118,7 @@ type StringValue struct {
 func (x *StringValue) Reset() {
 	*x = StringValue{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_grpc_proto_util_proto_msgTypes[2]
+		mi := &file_grpc_protos_util_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -131,7 +131,7 @@ func (x *StringValue) String() string {
 func (*StringValue) ProtoMessage() {}
 
 func (x *StringValue) ProtoReflect() protoreflect.Message {
-	mi := &file_grpc_proto_util_proto_msgTypes[2]
+	mi := &file_grpc_protos_util_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +144,7 @@ func (x *StringValue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StringValue.ProtoReflect.Descriptor instead.
 func (*StringValue) Descriptor() ([]byte, []int) {
-	return file_grpc_proto_util_proto_rawDescGZIP(), []int{2}
+	return file_grpc_protos_util_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *StringValue) GetValue() string {
@@ -154,39 +154,39 @@ func (x *StringValue) GetValue() string {
 	return ""
 }
 
-var File_grpc_proto_util_proto protoreflect.FileDescriptor
+var File_grpc_protos_util_proto protoreflect.FileDescriptor
 
-var file_grpc_proto_util_proto_rawDesc = []byte{
-	0x0a, 0x15, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x75, 0x74, 0x69,
-	0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x07,
-	0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x22, 0x0a, 0x0a, 0x49, 0x6e, 0x74, 0x33, 0x32,
-	0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x23, 0x0a, 0x0b, 0x53,
-	0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61,
-	0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
-	0x42, 0x0a, 0x5a, 0x08, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+var file_grpc_protos_util_proto_rawDesc = []byte{
+	0x0a, 0x16, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x75, 0x74,
+	0x69, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73,
+	0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x22, 0x0a, 0x0a, 0x49, 0x6e, 0x74,
+	0x33, 0x32, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x23, 0x0a,
+	0x0b, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x14, 0x0a, 0x05,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x42, 0x0b, 0x5a, 0x09, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x70, 0x62, 0x73, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_grpc_proto_util_proto_rawDescOnce sync.Once
-	file_grpc_proto_util_proto_rawDescData = file_grpc_proto_util_proto_rawDesc
+	file_grpc_protos_util_proto_rawDescOnce sync.Once
+	file_grpc_protos_util_proto_rawDescData = file_grpc_protos_util_proto_rawDesc
 )
 
-func file_grpc_proto_util_proto_rawDescGZIP() []byte {
-	file_grpc_proto_util_proto_rawDescOnce.Do(func() {
-		file_grpc_proto_util_proto_rawDescData = protoimpl.X.CompressGZIP(file_grpc_proto_util_proto_rawDescData)
+func file_grpc_protos_util_proto_rawDescGZIP() []byte {
+	file_grpc_protos_util_proto_rawDescOnce.Do(func() {
+		file_grpc_protos_util_proto_rawDescData = protoimpl.X.CompressGZIP(file_grpc_protos_util_proto_rawDescData)
 	})
-	return file_grpc_proto_util_proto_rawDescData
+	return file_grpc_protos_util_proto_rawDescData
 }
 
-var file_grpc_proto_util_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_grpc_proto_util_proto_goTypes = []interface{}{
-	(*Empty)(nil),       // 0: proto.Empty
-	(*Int32Value)(nil),  // 1: proto.Int32Value
-	(*StringValue)(nil), // 2: proto.StringValue
+var file_grpc_protos_util_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_grpc_protos_util_proto_goTypes = []interface{}{
+	(*Empty)(nil),       // 0: protos.Empty
+	(*Int32Value)(nil),  // 1: protos.Int32Value
+	(*StringValue)(nil), // 2: protos.StringValue
 }
-var file_grpc_proto_util_proto_depIdxs = []int32{
+var file_grpc_protos_util_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -194,13 +194,13 @@ var file_grpc_proto_util_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_grpc_proto_util_proto_init() }
-func file_grpc_proto_util_proto_init() {
-	if File_grpc_proto_util_proto != nil {
+func init() { file_grpc_protos_util_proto_init() }
+func file_grpc_protos_util_proto_init() {
+	if File_grpc_protos_util_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_grpc_proto_util_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_grpc_protos_util_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Empty); i {
 			case 0:
 				return &v.state
@@ -212,7 +212,7 @@ func file_grpc_proto_util_proto_init() {
 				return nil
 			}
 		}
-		file_grpc_proto_util_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_grpc_protos_util_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Int32Value); i {
 			case 0:
 				return &v.state
@@ -224,7 +224,7 @@ func file_grpc_proto_util_proto_init() {
 				return nil
 			}
 		}
-		file_grpc_proto_util_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_grpc_protos_util_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StringValue); i {
 			case 0:
 				return &v.state
@@ -241,18 +241,18 @@ func file_grpc_proto_util_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_grpc_proto_util_proto_rawDesc,
+			RawDescriptor: file_grpc_protos_util_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_grpc_proto_util_proto_goTypes,
-		DependencyIndexes: file_grpc_proto_util_proto_depIdxs,
-		MessageInfos:      file_grpc_proto_util_proto_msgTypes,
+		GoTypes:           file_grpc_protos_util_proto_goTypes,
+		DependencyIndexes: file_grpc_protos_util_proto_depIdxs,
+		MessageInfos:      file_grpc_protos_util_proto_msgTypes,
 	}.Build()
-	File_grpc_proto_util_proto = out.File
-	file_grpc_proto_util_proto_rawDesc = nil
-	file_grpc_proto_util_proto_goTypes = nil
-	file_grpc_proto_util_proto_depIdxs = nil
+	File_grpc_protos_util_proto = out.File
+	file_grpc_protos_util_proto_rawDesc = nil
+	file_grpc_protos_util_proto_goTypes = nil
+	file_grpc_protos_util_proto_depIdxs = nil
 }

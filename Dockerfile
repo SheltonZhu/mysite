@@ -8,7 +8,6 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 
 FROM  alpine:latest as prod
 WORKDIR /root/
-COPY --from=builder /go/src/mysite/conf/config.conf ./conf/
 COPY --from=builder /go/src/mysite/app .
 ENV GIN_MODE="release"
 EXPOSE 8000 8000

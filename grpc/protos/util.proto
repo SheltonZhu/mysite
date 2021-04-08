@@ -1,7 +1,7 @@
 syntax = "proto3";
-package proto;
+package protos;
 
-option go_package = "/grpc/pb";
+option go_package = "/grpc/pbs";
 
 message Empty {}
 message Int32Value {
