@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+import "grpc/proto/util.proto";
+
+option go_package = "/grpc/pb";
+
+service BibleService{
+  rpc Get(Int32Value) returns (Bible){}
+  rpc List(Empty) returns (Bibles){}
+  rpc Create(StringValue) returns (Int32Value){}
+}
+
+message Bible {
+  int32 id = 1;
+  string text = 2;
+}
+
+message Bibles {
+  repeated Bible bible = 1;
+}

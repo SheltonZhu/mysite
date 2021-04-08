@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "/grpc/pb";
+
+message Empty {}
+message Int32Value {
+  // The int32 value.
+  int32 value = 1;
+}
+
+message StringValue {
+  // The string value.
+  string value = 1;
+}

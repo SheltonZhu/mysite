@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	_ "mysite/conf"
+	_ "github.com/joho/godotenv/autoload"
 	"mysite/grpc"
 	"mysite/routers"
 	"mysite/services"

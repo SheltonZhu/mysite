@@ -6,8 +6,7 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"mysite/dao"
-	"mysite/grpc/bible"
-	"mysite/grpc/heartbeat"
+	"mysite/grpc/pb"
 	"net"
 )
 
@@ -18,8 +17,8 @@ func InitServer(port int) {
 		log.Fatalf("grpc server start failed. failed to listen: %v", err)
 	}
 	grpcServer := grpc.NewServer()
-	heartbeat.RegisterHeartbeatServiceServer(grpcServer, &heartbeatServiceServer{})
-	bible.RegisterBibleServiceServer(grpcServer, &bibleServiceServer{})
+	pb.RegisterHeartbeatServiceServer(grpcServer, &heartbeatServiceServer{})
+	pb.RegisterBibleServiceServer(grpcServer, &bibleServiceServer{})
 
 	if err = grpcServer.Serve(listener); err != nil {
 		panic(fmt.Sprintf("grpc serve at %d start failed.", port))
@@ -27,26 +26,26 @@ func InitServer(port int) {
 }
 
 type heartbeatServiceServer struct {
-	heartbeat.UnimplementedHeartbeatServiceServer
+	pb.UnimplementedHeartbeatServiceServer
 }
 
-func (p *heartbeatServiceServer) Heartbeat(ctx context.Context, e *heartbeat.Empty) (*heartbeat.StringValue, error) {
-	return &heartbeat.StringValue{Value: "pong_grpc"}, nil
+func (p *heartbeatServiceServer) Heartbeat(ctx context.Context, e *pb.Empty) (*pb.StringValue, error) {
+	return &pb.StringValue{Value: "pong_grpc"}, nil
 }
 
 type bibleServiceServer struct {
-	bible.UnimplementedBibleServiceServer
+	pb.UnimplementedBibleServiceServer
 }
 
-func (p *bibleServiceServer) Get(ctx context.Context, id *bible.Int32Value) (*bible.Bible, error) {
+func (p *bibleServiceServer) Get(ctx context.Context, id *pb.Int32Value) (*pb.Bible, error) {
 	b := dao.GetBibleById(int(id.Value))
-	return &bible.Bible{Id: int32(b.Id), Text: b.Text}, nil
+	return &pb.Bible{Id: int32(b.Id), Text: b.Text}, nil
 }
-func (p *bibleServiceServer) List(ctx context.Context, _ *bible.Empty) (*bible.Bibles, error) {
-	return &bible.Bibles{}, nil
+func (p *bibleServiceServer) List(ctx context.Context, _ *pb.Empty) (*pb.Bibles, error) {
+	return &pb.Bibles{}, nil
 }
-func (p *bibleServiceServer) Create(ctx context.Context, text *bible.StringValue) (*bible.Int32Value, error) {
+func (p *bibleServiceServer) Create(ctx context.Context, text *pb.StringValue) (*pb.Int32Value, error) {
 	b := dao.Bible{Text: text.Value}
 	id, err := dao.CreateBible(&b)
-	return &bible.Int32Value{Value: int32(id)}, err
+	return &pb.Int32Value{Value: int32(id)}, err
 }

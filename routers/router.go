@@ -43,9 +43,9 @@ func InitRouter() *gin.Engine {
 		v1.GET("/ping", controllers.Ping)
 		v1.GET("/bibles", controllers.ListBibles)
 		v1.GET("/bible/:id", controllers.GetBible)
-		v1.POST("/bible/:id", controllers.Ping)
-		v1.PUT("/bible", controllers.Ping)
-		v1.PATCH("/bible", controllers.Ping)
+		v1.POST("/bible", controllers.Ping)
+		v1.PUT("/bible/:id", controllers.Ping)
+		v1.PATCH("/bible/:id", controllers.Ping)
 		v1.DELETE("/bible/:id", controllers.Ping)
 	}
 	return router

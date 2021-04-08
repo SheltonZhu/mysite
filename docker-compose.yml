@@ -9,21 +9,19 @@ services:
     command: /root/app -rpc=true -rpc_port=8000 -http=false
     container_name: master
     environment:
-      MYSQL: "root:woaiyao@tcp(mysql:3306)/mysite?charset=utf8mb4&parseTime=True&loc=Local"
+      MYSQL: ${MYSQL}
   slave_1:
-    build:
-      target: prod
-      context: ./
-      dockerfile: Dockerfile
+    image: ${CUSTOMIZE_NETWORK_NAME}_master
     command: /root/app -master=master:8000
     container_name: slave_1
+    depends_on:
+      - master
   slave_2:
-    build:
-      target: prod
-      context: ./
-      dockerfile: Dockerfile
+    image: ${CUSTOMIZE_NETWORK_NAME}_master
     command: /root/app -master=master:8000
     container_name: slave_2
+    depends_on:
+      - master
   nginx:
     build:
       target: nginx
@@ -37,15 +35,13 @@ services:
 #    image: mysql
 #    container_name: mysql
 #    restart: always
-#    networks:
-#      mysite:
 #    environment:
-#      MYSQL_ROOT_PASSWORD: wordpress
-#      MYSQL_DATABASE: wordpress
+#      MYSQL_ROOT_PASSWORD: woaiyao
+  #      MYSQL_DATABASE: wordpress
 #      MYSQL_USER: wordpress
 #      MYSQL_PASSWORD: wordpress
 
 networks:
   default:
     external:
-      name: mysite
+      name: ${CUSTOMIZE_NETWORK_NAME}

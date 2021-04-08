@@ -5,7 +5,7 @@ import (
 	"mysite/dao"
 	"mysite/dto"
 	"mysite/grpc"
-	"mysite/grpc/bible"
+	"mysite/grpc/pb"
 	"time"
 )
 
@@ -17,11 +17,11 @@ func GetBible(id int) *dto.Result {
 	var _ error
 	if MasterAddr != "" {
 		conn := grpc.InitClient(MasterAddr)
-		client := bible.NewBibleServiceClient(conn)
+		client := pb.NewBibleServiceClient(conn)
 		defer conn.Close()
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
-		data, _ = client.Get(ctx, &bible.Int32Value{Value: int32(id)})
+		data, _ = client.Get(ctx, &pb.Int32Value{Value: int32(id)})
 	} else {
 		data = dao.GetBibleById(id)
 	}

@@ -1,4 +1,5 @@
 .idea/
 *.exe
 *.exe~
-conf/*.conf
+.env
+*.env
