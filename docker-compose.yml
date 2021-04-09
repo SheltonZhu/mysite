@@ -16,12 +16,20 @@ services:
     container_name: slave_1
     depends_on:
       - master
+    environment:
+      CSRF_TOKEN_SECRET: ${CSRF_TOKEN_SECRET}
+      SESSION_NAME: ${SESSION_NAME}
+      SESSION_SECRET: ${SESSION_SECRET}
   slave_2:
     image: ${CUSTOMIZE_NETWORK_NAME}_master
     command: /root/app -master=master:8000
     container_name: slave_2
     depends_on:
       - master
+    environment:
+      CSRF_TOKEN_SECRET: ${CSRF_TOKEN_SECRET}
+      SESSION_NAME: ${SESSION_NAME}
+      SESSION_SECRET: ${SESSION_SECRET}
   nginx:
     build:
       target: nginx
@@ -37,7 +45,7 @@ services:
 #    restart: always
 #    environment:
 #      MYSQL_ROOT_PASSWORD: woaiyao
-  #      MYSQL_DATABASE: wordpress
+#      MYSQL_DATABASE: wordpress
 #      MYSQL_USER: wordpress
 #      MYSQL_PASSWORD: wordpress
 
