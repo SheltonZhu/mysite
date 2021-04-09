@@ -2,10 +2,10 @@ package grpc
 
 import (
 	"fmt"
+	"github.com/SheltonZhu/mysite/grpc/pbs"
+	. "github.com/SheltonZhu/mysite/grpc/servers"
 	"google.golang.org/grpc"
 	"log"
-	"mysite/grpc/pbs"
-	. "mysite/grpc/servers"
 	"net"
 )
 

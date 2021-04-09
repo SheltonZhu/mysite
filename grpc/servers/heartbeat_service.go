@@ -2,8 +2,8 @@ package servers
 
 import (
 	"context"
+	"github.com/SheltonZhu/mysite/grpc/pbs"
 	"log"
-	"mysite/grpc/pbs"
 )
 
 type HeartbeatServiceServer struct {

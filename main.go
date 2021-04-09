@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/SheltonZhu/mysite/grpc"
+	"github.com/SheltonZhu/mysite/routers"
+	"github.com/SheltonZhu/mysite/services"
 	_ "github.com/joho/godotenv/autoload"
-	"mysite/grpc"
-	"mysite/routers"
-	"mysite/services"
 )
 
 var (

@@ -1,9 +1,9 @@
 package middlewares
 
 import (
+	"github.com/SheltonZhu/mysite/common"
 	"github.com/gin-gonic/gin"
 	"log"
-	"mysite/common"
 	"time"
 )
 

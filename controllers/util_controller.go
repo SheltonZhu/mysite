@@ -1,8 +1,8 @@
 package controllers
 
 import (
+	"github.com/SheltonZhu/mysite/services"
 	"github.com/gin-gonic/gin"
-	"mysite/services"
 	"net/http"
 )
 

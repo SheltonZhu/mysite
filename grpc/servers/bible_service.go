@@ -2,9 +2,9 @@ package servers
 
 import (
 	"context"
+	"github.com/SheltonZhu/mysite/dao"
+	"github.com/SheltonZhu/mysite/grpc/pbs"
 	"log"
-	"mysite/dao"
-	"mysite/grpc/pbs"
 )
 
 type BibleServiceServer struct {

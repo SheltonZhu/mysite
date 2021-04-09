@@ -2,8 +2,8 @@ package dao
 
 import (
 	"fmt"
+	"github.com/SheltonZhu/mysite/dbs"
 	"log"
-	"mysite/dbs"
 )
 
 const BibleTableName = "bible_bible"

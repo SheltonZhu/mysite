@@ -1,11 +1,11 @@
 package routers
 
 import (
+	"github.com/SheltonZhu/mysite/controllers"
+	"github.com/SheltonZhu/mysite/middlewares"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	csrf "github.com/utrack/gin-csrf"
-	"mysite/controllers"
-	"mysite/middlewares"
 )
 
 func InitRouter() *gin.Engine {

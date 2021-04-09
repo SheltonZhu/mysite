@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/SheltonZhu/mysite/dto"
+	"github.com/SheltonZhu/mysite/services"
 	"github.com/gin-gonic/gin"
-	"mysite/dto"
-	"mysite/services"
 	"net/http"
 	"strconv"
 	"strings"

@@ -2,9 +2,9 @@ package services
 
 import (
 	"context"
-	"mysite/dto"
-	"mysite/grpc"
-	"mysite/grpc/pbs"
+	"github.com/SheltonZhu/mysite/dto"
+	"github.com/SheltonZhu/mysite/grpc"
+	"github.com/SheltonZhu/mysite/grpc/pbs"
 	"time"
 )
 

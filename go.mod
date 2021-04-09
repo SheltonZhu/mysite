@@ -1,4 +1,4 @@
-module mysite
+module github.com/SheltonZhu/mysite
 
 go 1.15
 
