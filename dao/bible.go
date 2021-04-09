@@ -1,8 +1,12 @@
 package dao
 
 import (
+	"fmt"
+	"log"
 	"mysite/dbs"
 )
+
+const BibleTableName = "bible_bible"
 
 type Bible struct {
 	Id   int    `gorm:"primaryKey;autoIncrement;not null;column:bible_id" json:"id"`
@@ -10,17 +14,19 @@ type Bible struct {
 }
 
 func init() {
-	dbs.MysqlClient.Table("bible_bible").AutoMigrate(&Bible{})
+	if err := dbs.MysqlClient.Table(BibleTableName).AutoMigrate(&Bible{}); err != nil {
+		log.Println(fmt.Sprintf("migrate faild. %v", err))
+	}
 }
 
 func GetBibleById(id int) (bible Bible, err error) {
-	result := dbs.MysqlClient.Table("bible_bible").First(&bible, id)
+	result := dbs.MysqlClient.Table(BibleTableName).First(&bible, id)
 	err = result.Error
 	return
 }
 
 func ListBibles() (bibles []Bible, err error) {
-	result := dbs.MysqlClient.Table("bible_bible").Find(&bibles)
+	result := dbs.MysqlClient.Table(BibleTableName).Find(&bibles)
 	err = result.Error
 	return
 }
@@ -30,11 +36,11 @@ func (b *Bible) CreateBible() (int, error) {
 }
 
 func CreateBible(bible *Bible) (int, error) {
-	result := dbs.MysqlClient.Table("bible_bible").Create(bible)
+	result := dbs.MysqlClient.Table(BibleTableName).Create(bible)
 	return bible.Id, result.Error
 }
 
 func DeleteBible(id int) (int, error) {
-	result := dbs.MysqlClient.Table("bible_bible").Delete(&Bible{}, id)
+	result := dbs.MysqlClient.Table(BibleTableName).Delete(&Bible{}, id)
 	return int(result.RowsAffected), result.Error
 }

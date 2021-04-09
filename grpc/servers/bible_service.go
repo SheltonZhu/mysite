@@ -2,6 +2,7 @@ package servers
 
 import (
 	"context"
+	"log"
 	"mysite/dao"
 	"mysite/grpc/pbs"
 )
@@ -11,11 +12,13 @@ type BibleServiceServer struct {
 }
 
 func (p *BibleServiceServer) Get(ctx context.Context, id *pbs.Int32Value) (*pbs.Bible, error) {
+	log.Println("bible_get")
 	b, err := dao.GetBibleById(int(id.Value))
 	return &pbs.Bible{Id: int32(b.Id), Text: b.Text}, err
 }
 
 func (p *BibleServiceServer) List(ctx context.Context, _ *pbs.Empty) (*pbs.Bibles, error) {
+	log.Println("bible_list")
 	bibles := make([]*pbs.Bible, 0)
 	if b, err := dao.ListBibles(); err != nil {
 		return &pbs.Bibles{}, err
@@ -29,6 +32,7 @@ func (p *BibleServiceServer) List(ctx context.Context, _ *pbs.Empty) (*pbs.Bible
 }
 
 func (p *BibleServiceServer) Create(ctx context.Context, text *pbs.StringValue) (*pbs.Int32Value, error) {
+	log.Println("bible_create")
 	b := dao.Bible{Text: text.Value}
 	id, err := dao.CreateBible(&b)
 	if err != nil {
@@ -38,6 +42,7 @@ func (p *BibleServiceServer) Create(ctx context.Context, text *pbs.StringValue) 
 }
 
 func (p *BibleServiceServer) Delete(ctx context.Context, id *pbs.Int32Value) (*pbs.Int32Value, error) {
+	log.Println("bible_delete")
 	count, err := dao.DeleteBible(int(id.Value))
 	if err != nil {
 		return &pbs.Int32Value{}, err
